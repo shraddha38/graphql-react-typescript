@@ -17,7 +17,6 @@ export function useAxios<T>({ url, query }: UseFetchInputProps): UseFetchRespons
     const [data, setData] = React.useState<T | null>(null);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
-    console.log(query, "query in Axios hook")
     async function getData() {
         try {
             const response = await axios.post(url, {

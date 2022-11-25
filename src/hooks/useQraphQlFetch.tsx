@@ -6,17 +6,16 @@ interface UseFetchInputProps {
     query?: string;
 };
 interface UseFetchResponse<T> {
-    data: T | null;
+    data: Array<T> | null;
     loading: boolean;
     error: any;
     refetch: () => void;
 }
 
 export function useFetch<T>({ url, query }: UseFetchInputProps): UseFetchResponse<T> {
-    const [data, setData] = React.useState<T|null>(null);
+    const [data, setData] = React.useState<T | null>(null);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
-    console.log(query, "query")
     async function getData() {
         try {
             const response = await fetch(url, {
