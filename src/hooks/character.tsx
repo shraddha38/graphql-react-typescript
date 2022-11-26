@@ -13,7 +13,6 @@ const myQuery = gql`
                     }`
 
 export const useCharacter = (id: number | string | undefined) => {
-    console.log('from hook', id)
     if (!id) {
         return { loading: false, error: null, data: { character: null } };
     }
