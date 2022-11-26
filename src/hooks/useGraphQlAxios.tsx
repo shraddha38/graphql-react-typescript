@@ -6,15 +6,15 @@ interface UseFetchInputProps {
     url: string;
     query?: string;
 };
-interface UseFetchResponse<T> {
-    data: T | null;
+interface UseFetchResponse {
+    data: any;
     loading: boolean;
     error: any;
     refetch: () => void;
 }
 
-export function useAxios<T>({ url, query }: UseFetchInputProps): UseFetchResponse<T> {
-    const [data, setData] = React.useState<T | null>(null);
+export function useAxios<T>({ url, query }: UseFetchInputProps): UseFetchResponse{
+    const [data, setData] = React.useState<any>(null);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
     async function getData() {
