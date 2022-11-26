@@ -13,7 +13,7 @@ interface UseFetchResponse<T> {
 }
 
 export function useFetch<T>({ url, query }: UseFetchInputProps): UseFetchResponse<T> {
-    const [data, setData] = React.useState<T | null>(null);
+    const [data, setData] = React.useState<T[]| null>(null);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
     async function getData() {
