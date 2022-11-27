@@ -13,8 +13,11 @@ export const Character = () => {
             {error && <p>Error :</p>}
             <h2> Quick Insights About your Desired Character</h2>
             <div style={{
-                border: "1px solid red",
+                border: "2px solid red",
                 margin: "20px 50px",
+                borderRadius: "10px",
+                padding: "20px",
+                boxShadow: "0 0 10px 0 rgba(0,0,0,0.5)"
 
             }}>
 

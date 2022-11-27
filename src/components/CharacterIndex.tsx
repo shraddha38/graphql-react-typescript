@@ -14,7 +14,7 @@ export const CharacterIndex = () => {
             {error && <p>Error :</p>}
             <div>
                 {
-                    data && <h1>{"Characters\n"} </h1>
+                    data && <h1>{" Rick And Morty Characters\n"} </h1>
                 }
             </div>
             <div style={{
