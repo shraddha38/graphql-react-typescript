@@ -12,16 +12,25 @@ export const CharacterIndex = () => {
         <div className='CharacterList'>
             {loading && <p>Loading...</p>}
             {error && <p>Error :</p>}
-            <h1>{"Characters\n"} </h1>
-            {data && data.characters.results.map((character: any) => (
-
-                <div key={character.id} style={{ border: "1px solid-red" }}>
-                    <NavLink to={`/${character.id}`}>
-                        <img src={character.image} alt={character.name} />
-                        <p>{character.name}</p>
-                    </NavLink>
-                </div>
-            ))}
+            <div>
+                {
+                    data && <h1>{"Characters\n"} </h1>
+                }
+            </div>
+            <div style={{
+                display: "flex",
+                justifyContent: "space-around",
+                flexWrap: "wrap"
+            }}>
+                {data && data.characters.results.map((character: any) => (
+                    <div key={character.id} style={{ border: "1px solid-red" }}>
+                        <NavLink to={`/${character.id}`}>
+                            <img src={character.image} alt={character.name} width={250} height={250} />
+                            <p>{character.name}</p>
+                        </NavLink>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };  

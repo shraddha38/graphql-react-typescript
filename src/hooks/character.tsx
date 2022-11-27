@@ -16,7 +16,6 @@ export const useCharacter = (id: number | string | undefined) => {
     if (!id) {
         return { loading: false, error: null, data: { character: null } };
     }
-
     const { loading, error, data } = useQuery(myQuery, {
         variables: { id }
     });
