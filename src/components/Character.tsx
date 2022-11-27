@@ -24,7 +24,7 @@ export const Character = () => {
                 {data && data.character &&
                     <>
 
-                        <img src={data.character.image} style={{marginTop:"20px"}}/>
+                        <img src={data.character.image} style={{ marginTop: "20px" }} />
                         <p>
                             <b>Name:</b> {data.character.name}
                         </p>
@@ -36,11 +36,27 @@ export const Character = () => {
                             ))}
                         </p>
 
+                        <button style={{
+                            padding: "10px 20px",
+                            backgroundColor: "lightgray",
+                            color: "black",
+                            border: "none",
+                            borderRadius: "5px",
+                            cursor: "pointer",
+                            marginTop: "20px"
+
+                        }}
+                            onClick={() => window.history.back()}
+
+                        >
+                            Explore All Characters</button>
+
+
 
                     </>
                 }
 
             </div>
-        </div>
+        </div >
     );
 };
