@@ -15,8 +15,16 @@ function getMaxFromColumnName(columnName) {
     data.pop();
     var types = ['string', 'number', 'number', 'number'];
     var arrayOfObjects = data.map(function (datum) { return csvToJson(header, types, datum.split(',')); });
-    arrayOfObjects.map(function (i) {
+    var maxValue = arrayOfObjects.map(function (i) {
         return Object.keys(i) === columnName ? Math.max(i) : "Shraddha";
     });
+    return maxValue;
 }
-console.log(getMaxFromColumnName("PrevMonthBalance"));
+function greeter(fn) {
+    fn("Hello, World");
+}
+function printToConsole(s) {
+    console.log(s);
+}
+greeter(printToConsole);
+console.log(greeter(printToConsole));
