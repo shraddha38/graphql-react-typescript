@@ -2,6 +2,7 @@ import { List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/mat
 import React, { useEffect } from 'react';
 import { useAxios } from '../hooks/useGraphQlAxios';
 import { useFetch } from '../hooks/useQraphQlFetch';
+import CircularIndeterminate from './Spinner';
 
 const LANGUAGES_QUERY = `query{
   languages {
@@ -22,15 +23,18 @@ export const AxiosData = () => {
 
   return (
     <div>
-      <Typography variant="h4" component="div" sx={{ color: "lightseagreen", textAlign: 'center', fontFamily: "cursive", fontSize: "50px", m: 5 }}>
-        {
-          "Get Data using Axios with GraphQL"
-        }
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ color: "lightyellow" }}>
+      {languagesData ? (
+        <>
 
-        Languages
-      </Typography>
+          <Typography variant="h4" component="div" sx={{ color: "lightseagreen", textAlign: 'center', fontFamily: "cursive", fontSize: "50px", m: 5 }}>
+            {
+              "Get Data using Axios with GraphQL"
+            }
+          </Typography>
+          <Typography variant="h3" gutterBottom sx={{ color: "lightyellow" }}>
+
+            Languages
+          </Typography></>) : <CircularIndeterminate />}
       {languagesData && languagesData.languages.map((lang: any) => (
         <>
 

@@ -2,6 +2,7 @@ import { List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/mat
 import React, { useEffect } from 'react';
 import { useAxios } from '../hooks/useGraphQlAxios';
 import { useFetch } from '../hooks/useQraphQlFetch';
+import CircularIndeterminate from './Spinner';
 
 
 const COUNTRIES_QUERY = `query{
@@ -29,15 +30,18 @@ export const FetchAxios = () => {
 
   return (
     <div>
-      <Typography variant="h4" component="div" sx={{ color: "lightseagreen", textAlign: 'center', fontFamily: "cursive", fontSize: "50px", m: 5 }}>
-        {
-          "Get Data using Fetch with GraphQL"
-        }
-      </Typography>
-      <Typography variant="h3" gutterBottom sx={{ color: "lightyellow" }}>
+      {countriesData ? (
+        <>
 
-        Countries
-      </Typography>
+          <Typography variant="h4" component="div" sx={{ color: "lightseagreen", textAlign: 'center', fontFamily: "cursive", fontSize: "50px", m: 5 }}>
+            {
+              "Get Data using Fetch with GraphQL"
+            }
+          </Typography>
+          <Typography variant="h3" gutterBottom sx={{ color: "lightyellow" }}>
+
+            Countries
+          </Typography>   </>) : <CircularIndeterminate />}
       {countriesData && countriesData.countries.map((country: any) => (
         <>
 
