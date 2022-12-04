@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useCallback } from 'react';
 
-
 interface UseFetchInputProps {
     url: string;
     query?: string;
@@ -13,7 +12,7 @@ interface UseFetchResponse {
     refetch: () => void;
 }
 
-export function useAxios<T>({ url, query }: UseFetchInputProps): UseFetchResponse{
+export function useAxios({ url, query }: UseFetchInputProps): UseFetchResponse {
     const [data, setData] = React.useState<any>(null);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
@@ -23,7 +22,7 @@ export function useAxios<T>({ url, query }: UseFetchInputProps): UseFetchRespons
                 query: query
             });
             const data = await response;
-            setData(data.data);
+            setData(data.data.data);    
         } catch (error: any) {
             setError(error);
         } finally {
@@ -37,6 +36,5 @@ export function useAxios<T>({ url, query }: UseFetchInputProps): UseFetchRespons
     const refetch = useCallback(() => {
         getData();
     }, [url, query]);
-
     return { data, loading, error, refetch };
 };

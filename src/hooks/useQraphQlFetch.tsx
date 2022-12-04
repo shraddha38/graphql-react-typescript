@@ -41,6 +41,5 @@ export function useFetch<T>({ url, query }: UseFetchInputProps): UseFetchRespons
     const refetch = useCallback(() => {
         getData();
     }, [url, query]);
-
     return { data, loading, error, refetch };
 };
