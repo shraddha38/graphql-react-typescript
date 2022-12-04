@@ -8,7 +8,6 @@ const client = new ApolloClient({ uri: "https://rickandmortyapi.com/graphql", ca
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
-
       <ApolloProvider client={client}>
         <App />
       </ApolloProvider>

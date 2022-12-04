@@ -1,10 +1,10 @@
 import './App.css'
-import { useFetch } from './hooks/useQraphQlFetch';
-import React from 'react';
 import { CharacterIndex } from './components/CharacterIndex';
 import { Routes, Route } from 'react-router-dom';
 import { Character } from './components/Character';
-import { CalculateRectangle } from './components/TypeDeclarations';
+import Home from './components/Home';
+import { FetchAxios } from './components/CountriesFetch.tsx';
+import { AxiosData } from './components/LanguagesAxios';
 
 export default function App() {
 
@@ -12,9 +12,11 @@ export default function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/x" element={<CalculateRectangle length={4} breath={5} characterstics={{ characterData: 'It s a closed geometric figure!' }} />} />
         <Route path="/:id" element={<Character />} />
-        <Route path="/" element={<CharacterIndex />} />
+        <Route path="/characters" element={<CharacterIndex />} />
+        <Route path="/useaxios" element={<AxiosData />} />
+        <Route path="/usefetch" element={<FetchAxios />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </div>
   )
