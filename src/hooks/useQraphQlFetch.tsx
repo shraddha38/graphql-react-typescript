@@ -5,15 +5,15 @@ interface UseFetchInputProps {
     url: string;
     query?: string;
 };
-interface UseFetchResponse<T> {
-    data: Array<T> | null;
+interface UseFetchResponse {
+    data: any;
     loading: boolean;
     error: any;
     refetch: () => void;
 }
 
-export function useFetch<T>({ url, query }: UseFetchInputProps): UseFetchResponse<T> {
-    const [data, setData] = React.useState<T[]| null>(null);
+export function useFetch({ url, query }: UseFetchInputProps): UseFetchResponse {
+    const [data, setData] = React.useState<any>(null);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
     async function getData() {

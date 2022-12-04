@@ -2,9 +2,7 @@ import { List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/mat
 import React, { useEffect } from 'react';
 import { useAxios } from '../hooks/useGraphQlAxios';
 import { useFetch } from '../hooks/useQraphQlFetch';
-interface CountriesResponse {
-  countries: Array<string>;
-}
+
 
 const COUNTRIES_QUERY = `query{
   countries {
@@ -20,7 +18,7 @@ const LANGUAGES_QUERY = `query{
   }
 }`
 export const FetchAxios = () => {
-  const { data: countriesData, refetch: countriesRefetch } = useFetch<CountriesResponse>({ url: "https://countries.trevorblades.com/", query: COUNTRIES_QUERY });
+  const { data: countriesData, refetch: countriesRefetch } = useFetch({ url: "https://countries.trevorblades.com/", query: COUNTRIES_QUERY });
   const { data: languagesData, refetch: languagesRefetch } = useAxios({ url: "https://countries.trevorblades.com/", query: LANGUAGES_QUERY });
   useEffect(() => {
     countriesRefetch();

@@ -3,7 +3,7 @@ import { CharacterIndex } from './components/CharacterIndex';
 import { Routes, Route } from 'react-router-dom';
 import { Character } from './components/Character';
 import Home from './components/Home';
-import { FetchAxios } from './components/CountriesFetch.tsx';
+import { FetchAxios } from './components/CountriesFetch';
 import { AxiosData } from './components/LanguagesAxios';
 
 export default function App() {
