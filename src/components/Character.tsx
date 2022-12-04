@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useCharacter } from '../hooks/character';
-
+import { useCharacter } from '../hooks/useGetCharacter';
+import CircularIndeterminate from './Spinner';
 export const Character = () => {
     const { id } = useParams();
     const { loading, error, data } = useCharacter(parseInt(id ?? ''));
@@ -9,54 +9,56 @@ export const Character = () => {
 
     return (
         <div>
-            {loading && <p>Loading...</p>}
+            {loading && <CircularIndeterminate />}
             {error && <p>Error :</p>}
-            <h2> Quick Insights About your Desired Character</h2>
-            <div style={{
-                border: "2px solid red",
-                margin: "20px 50px",
-                borderRadius: "10px",
-                padding: "20px",
-                boxShadow: "0 0 10px 0 rgba(0,0,0,0.5)"
 
-            }}>
+            {data && (
 
-                {data && data.character &&
-                    <>
+                <div style={{
+                    border: "2px solid red",
+                    margin: "20px 50px",
+                    borderRadius: "10px",
+                    padding: "20px",
+                    boxShadow: "0 0 10px 0 rgba(0,0,0,0.5)"
 
-                        <img src={data.character.image} style={{ marginTop: "20px" }} />
-                        <p>
-                            <b>Name:</b> {data.character.name}
-                        </p>
-                        <p>
-                            <b>Episodes:</b> {data.character.episode.map((episode: any) => (
-                                <p key={episode.id}>{episode.name}- <b>
-                                    {episode.episode}
-                                </b></p>
-                            ))}
-                        </p>
+                }}>
+                    <h2> Quick Insights About your Desired Character</h2>
+                    {data && data.character &&
+                        <>
 
-                        <button style={{
-                            padding: "10px 20px",
-                            backgroundColor: "lightgray",
-                            color: "black",
-                            border: "none",
-                            borderRadius: "5px",
-                            cursor: "pointer",
-                            marginTop: "20px"
+                            <img src={data.character.image} style={{ marginTop: "20px" }} />
+                            <p>
+                                <b>Name:</b> {data.character.name}
+                            </p>
+                            <p>
+                                <b>Episodes:</b> {data.character.episode.map((episode: any) => (
+                                    <p key={episode.id}>{episode.name}- <b>
+                                        {episode.episode}
+                                    </b></p>
+                                ))}
+                            </p>
 
-                        }}
-                            onClick={() => window.history.back()}
+                            <button style={{
+                                padding: "10px 20px",
+                                backgroundColor: "lightgray",
+                                color: "black",
+                                border: "none",
+                                borderRadius: "5px",
+                                cursor: "pointer",
+                                marginTop: "20px"
 
-                        >
-                            Explore All Characters</button>
+                            }}
+                                onClick={() => window.history.back()}
+
+                            >
+                                Explore All Characters</button>
 
 
 
-                    </>
-                }
+                        </>
+                    }
 
-            </div>
+                </div>)}
         </div >
     );
 };

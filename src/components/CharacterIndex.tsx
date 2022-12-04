@@ -3,6 +3,7 @@ import { useQuery, gql } from '@apollo/client';
 import { useGraphQlApolloClient } from '../hooks/useGraphQlApolloClient';
 import "./Character.css";
 import { NavLink } from 'react-router-dom';
+import CircularIndeterminate from './Spinner';
 
 
 export const CharacterIndex = () => {
@@ -10,7 +11,7 @@ export const CharacterIndex = () => {
     console.log(data, loading, error);
     return (
         <div className='CharacterList'>
-            {loading && <p>Loading...</p>}
+            {loading && <CircularIndeterminate />}
             {error && <p>Error :</p>}
             <div>
                 {
