@@ -16,6 +16,13 @@ export default function Home() {
             console.log("here is the monaco instance:", monaco);
         }
     }, [monaco]);
+    let gqlValue = `
+    query {
+        countries {
+            name
+            languages
+                }
+              }  `;
     return (
         <>
             <Typography variant="h4" component="div" gutterBottom sx={{ textAlign: 'center', fontFamily: "cursive", fontSize: "50px", mb: 10 }}>
@@ -57,34 +64,10 @@ export default function Home() {
                 </Typography>
                 <Editor
                     height="10vh"
-                    width="80vh"
-                    defaultValue=" 
-                    const COUNTRIES_QUERY = `query{
-                        countries {
-                            code
-                            name
-                            }
-                            }`
-                    const LANGUAGES_QUERY = `query{
-                                languages {
-                                    code
-                                        name
-                                        }
-                                        }`
-                    const RickAndMorty_QUERY = `query{'
-                                characters(page: 1) {
-                                    results {
-                                        id
-                                        name
-                                        status
-                                        species
-                                        type
-                                        }
-                                        }`
-                                        "
-                    language="javascript"
-                    defaultLanguage="javascript"
+                    width="50vh"
+                    language="GraphQL"
                     theme="vs-dark"
+                    value={gqlValue}
                 />
             </>
 
