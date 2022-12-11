@@ -12,7 +12,16 @@ const myQuery = gql`
 
                     `;
 export const useGraphQlApolloClient = () => {
-    const { loading, error, data } = useQuery(myQuery);
+    const { loading, error, data, refetch } = useQuery(myQuery, {
+        pollInterval: 500,
+        fetchPolicy: "cache-first",
+        nextFetchPolicy: "network-only"
+    });
+    React.useEffect(() => {
+        refetch();
+    }, [refetch]);
+
     return { loading, error, data };
+
 };
 
