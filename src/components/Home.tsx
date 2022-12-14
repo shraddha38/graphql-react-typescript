@@ -16,6 +16,7 @@ export default function Home() {
             console.log("here is the monaco instance:", monaco);
         }
     }, [monaco]);
+    const [personalizedQueryValue, setPersonalizedQueryValue] = React.useState("")
     let gqlValue = `
     query {
         countries {
@@ -23,6 +24,11 @@ export default function Home() {
             languages
                 }
               }  `;
+
+    React.useEffect(() => {
+        setPersonalizedQueryValue(gqlValue);
+    }, [])
+
     return (
         <>
             <Typography variant="h4" component="div" gutterBottom sx={{ textAlign: 'center', fontFamily: "cursive", fontSize: "50px", mb: 10 }}>
@@ -67,7 +73,7 @@ export default function Home() {
                     width="50vh"
                     language="GraphQL"
                     theme="vs-dark"
-                    value={gqlValue}
+                    value={personalizedQueryValue}
                 />
             </>
 
