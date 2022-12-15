@@ -46,7 +46,7 @@ export default function Home() {
                     onClick={() => {
                         navigate("/characters")
                     }}>
-                    Using Apollo Client
+                    Using Apollo GraphQL
                 </Button>
                 <Button variant="contained" size='large'
                     color="success"
