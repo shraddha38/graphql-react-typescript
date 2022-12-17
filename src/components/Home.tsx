@@ -54,7 +54,9 @@ export default function Home() {
                     onClick={() => {
                         navigate("/usefetch")
                     }}
-                >Using Fetch</Button>
+                >
+                    Using Fetch
+                </Button>
                 <Button
                     variant="contained"
                     size='large'
