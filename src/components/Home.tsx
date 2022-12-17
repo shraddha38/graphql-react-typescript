@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useNavigate } from "react-router-dom"
 import Editor, { useMonaco } from '@monaco-editor/react';
 
@@ -27,7 +27,8 @@ export default function Home() {
 
     React.useEffect(() => {
         setPersonalizedQueryValue(gqlValue);
-    }, [])
+        console.log("personalizedQueryValue", personalizedQueryValue);
+    }, [personalizedQueryValue])
 
     return (
         <>
@@ -68,13 +69,22 @@ export default function Home() {
                 <Typography variant="h4" component="div" gutterBottom sx={{ textAlign: 'center', fontFamily: "monospace", fontSize: "30px", mb: 10 }}>
                     {"Write your query here"}
                 </Typography>
-                <Editor
-                    height="10vh"
-                    width="50vh"
-                    language="GraphQL"
-                    theme="vs-dark"
-                    value={personalizedQueryValue}
-                />
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Editor
+                        height="30vh"
+                        width="60vh"
+                        language="GraphQL"
+                        theme="vs-dark"
+                        value={personalizedQueryValue}
+                    />
+                </Box>
+
             </>
 
         </>
